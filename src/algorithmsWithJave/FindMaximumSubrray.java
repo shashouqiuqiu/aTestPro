@@ -112,16 +112,17 @@ public class FindMaximumSubrray {
     	double max=Double.NEGATIVE_INFINITY;//记录最大和
     	int l=0;
     	int h=0;
+    	int pointer=0;
     	for(int i=0;i<A.length;i++){
     		if(sum<0){
     			sum=A[i];
-    			l=i;
+    			pointer=i;
     		}
     		else sum+=A[i];
     		if(sum>max){
     			max=sum;
     			h=i;
-    			
+    			l=pointer;
     		}
     	}
     	returnValue r=new returnValue();
@@ -132,9 +133,9 @@ public class FindMaximumSubrray {
 		return r;
     }
     public static void main(String[] args) {
-		double a[]={13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};
+		double a[]={13,-3,-25,20,9,8,-3,-16,3,-23,18};
 		returnValue r=FindMSInlinearTime(a);
-		for(int i=r.getMaxLeft();i<r.getMaxRight();i++)
+		for(int i=r.getMaxLeft();i<=r.getMaxRight();i++)
 		System.out.print(a[i]+"  ");
 		System.out.println();
 		System.out.println(r.getSum());
